@@ -1,0 +1,378 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+/* * Main Color */
+:root {
+  --theSize: 4px;
+  --backgroundColor: #222;
+}
+
+body {
+  font-family: 'Oswald', sans-serif;
+}
+
+.container {
+  width: 1000px;
+  margin: auto;
+}
+
+.game-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20px;
+}
+
+.game-name{
+  font-weight: bold;
+  color: var(--backgroundColor);
+}
+
+.game-info .category span {
+  color: #f05;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.container .row {
+  display: flex;
+}
+
+.hangman-draw {
+  flex: 1;
+  height: 324px;
+  padding: 20px;
+  background-color: #F8F8F8;
+}
+
+.hangman-draw .thedraw {
+  position: relative;
+  width: 80px;
+  height: 280px;
+  border-bottom: var(--theSize) solid var(--backgroundColor);
+  left: -60px;
+  margin: auto;
+  display: none;
+}
+
+.hangman-draw .stand {
+  display: none;
+}
+
+.hangman-draw .stand::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--theSize);
+  background-color: var(--backgroundColor);
+}
+
+.hangman-draw .hang {
+  display: none;
+}
+
+.hangman-draw .hang::before {
+  content: "";
+  position: absolute;
+  height: var(--theSize);
+  width: 100px;
+  background-color: var(--backgroundColor);
+  top: 15px;
+  left: 38px;
+}
+
+.hangman-draw .hang::after {
+  content: "";
+  position: absolute;
+  height: 35px;
+  width: var(--theSize);
+  background-color: var(--backgroundColor);
+  top: 18px;
+  left: 134px;
+}
+
+.hangman-draw .rope {
+  display: none;
+}
+
+.hangman-draw .rope::after {
+  content: "";
+  position: absolute;
+  border: 5px dashed var(--backgroundColor);
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  top: 52px;
+  left: 96px;
+}
+
+.hangman-draw .head {
+  display: none;
+}
+
+.hangman-draw .head::before {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  top: 61px;
+  left: 106px;
+  border: 5px solid var(--backgroundColor);
+}
+
+.hangman-draw .body {
+  display: none;
+}
+
+.hangman-draw .body::after {
+  content: "";
+  position: absolute;
+  height: 100px;
+  width: var(--theSize);
+  background-color: var(--backgroundColor);
+  top: 120px;
+  left: 134px;
+}
+
+.hangman-draw .hands {
+  display: none;
+}
+
+.hangman-draw .hands::before,
+.hangman-draw .hands::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: var(--theSize);
+  background-color: var(--backgroundColor);
+  top: 150px;
+}
+
+.hangman-draw .hands::before {
+  left: 91px;
+  transform: rotate(30deg);
+}
+
+.hangman-draw .hands::after {
+  left: 132px;
+  transform: rotate(-30deg);
+}
+
+.hangman-draw .legs {
+  display: none;
+}
+
+.hangman-draw .legs::before,
+.hangman-draw .legs::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: var(--theSize);
+  background-color: var(--backgroundColor);
+  top: 230px;
+}
+
+.hangman-draw .legs::before {
+  left: 91px;
+  transform: rotate(-30deg);
+}
+
+.hangman-draw .legs::after {
+  left: 132px;
+  transform: rotate(30deg);
+}
+
+/* * HangDraw With WrongTime */
+
+/* ? Chossen The Way As You Like */
+
+
+
+/* ! Way One */
+.hangman-draw.wrong-1 .thedraw,
+.hangman-draw.wrong-2 .stand,
+.hangman-draw.wrong-3 .hang,
+.hangman-draw.wrong-4 .rope,
+.hangman-draw.wrong-5 .head,
+.hangman-draw.wrong-6 .body,
+.hangman-draw.wrong-7 .hands,
+.hangman-draw.wrong-8 .legs {
+  display: block;
+}
+
+/* ! Way Two */
+
+/* .hangman-draw.wrong-1 .thedraw {
+  display: block;
+}
+
+.hangman-draw.wrong-2 .stand {
+  display: block;
+}
+
+.hangman-draw.wrong-3 .hang {
+  display: block;
+}
+
+.hangman-draw.wrong-4 .rope {
+  display: block;
+}
+
+.hangman-draw.wrong-5 .head {
+  display: block;
+}
+
+.hangman-draw.wrong-6 .body {
+  display: block;
+}
+
+.hangman-draw.wrong-7 .hands {
+  display: block;
+}
+
+.hangman-draw.wrong-8 .legs {
+  display: block;
+} */
+
+
+/* * HangDraw With WrongTime */
+
+.letters {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+}
+
+.letters.finished {
+  pointer-events: none;
+}
+
+.letters .letter-box {
+  display: inline-flex;
+  background-color: var(--backgroundColor);
+  width: 55px;
+  height: 55px;
+  margin-right: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  color: #FFF;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 28px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.letters .letter-box.clicked {
+  opacity: 0.5;
+}
+
+.guess-word {
+  padding: 20px;
+  background-color: #f8f8f8;
+  min-height: 104px;
+  display: flex;
+  margin: 10px auto;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.guess-word span {
+  border-bottom: 3px solid #009688;
+  background-color: #FDFDFD;
+  font-size: 24px;
+  width: 50px;
+  height: 50px;
+  margin-right: 5px;
+  display: flex;
+  text-transform: uppercase;
+  align-items: center;
+  justify-content: center;
+  transition: .3s;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.popup .theBox {
+  padding: 20px;
+  background: var(--backgroundColor);
+  border-radius: 6px;
+  color: #FFF;
+  font-weight: bold;
+  text-align: center;
+}
+
+.popup h2 span {
+  color: #009688;
+  text-transform: capitalize;
+}
+
+.popup .theBtn {
+  width: 150px;
+  padding: 10px 15px;
+  border-radius: 30px;
+  background-color: #009688;
+  color: #FFF;
+  font-size: 17px;
+  border: 1px solid #CCC;
+  cursor: pointer;
+}
+
+/* * Media Query */
+@media(min-width:0px) and (max-width:450px) {
+  .container {
+    width: 350px;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .game-info {
+    font-size: 15px;
+  }
+
+  .popup h2 {
+    font-size: 18px;
+  }
+}
+
+@media(min-width:451px) and (max-width:767px) {
+  .container {
+    width: 400px;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+}
+
+@media(min-width:768px) and (max-width:992px) {
+  .container {
+    width: 600px;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+}
